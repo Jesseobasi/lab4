@@ -5,13 +5,16 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.serialization'
 }
 
+
 def apikeyPropertiesFile = rootProject.file("apikey.properties")
 def apikeyProperties = new Properties()
 apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
+
 android {
     namespace "com.codepath.campgrounds"
     compileSdk 36
+
 
     defaultConfig {
         applicationId "com.codepath.campgrounds"
@@ -20,9 +23,12 @@ android {
         versionCode 1
         versionName "1.0"
 
+
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "API_KEY", "\"${apikeyProperties['API_KEY']}\"")
+
+        buildConfigField("String", "API_KEY", apikeyProperties['API_KEY'])
     }
 
     buildTypes {
@@ -32,10 +38,12 @@ android {
         }
     }
 
+
     buildFeatures {
-        viewBinding = true
         buildConfig = true
+        viewBinding = true
     }
+
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
@@ -45,6 +53,7 @@ android {
         jvmTarget = '17'
     }
 }
+
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.24"

@@ -14,6 +14,11 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var campgroundLatLongTV: TextView
     private lateinit var campgroundImageIV: ImageView
 
+    companion object {
+        const val CAMPGROUND_EXTRA = "CAMPGROUND_EXTRA"
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
